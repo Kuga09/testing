@@ -36,7 +36,7 @@ class Test_root(unittest.TestCase):
         self.assertEqual(heand(0,0),'Деление на ноль')
 
     def test_int_equal(self):
-        self.assertEqual(heand(1,1), 0.1)
+        self.assertEqual(heand(1,1), 0.1) # Заведомо ошибка
         self.assertEqual(heand(-1,-1), 0.0)
 
     def test_dif_neg_int(self):
@@ -45,25 +45,28 @@ class Test_root(unittest.TestCase):
 
     def teat_one_neg_one_pos(self):
         self.assertEqual(heand(-1,2),'Извлечение корня из отрицательного числа')
-        self.assertEqual(heand(1,-2),5.196152422706632)
+        self.assertEqual(heand(1,-2), 5.196152422706632)
 
     def test_one_zero(self):
         self.assertEqual(heand(-1,0),'Извлечение корня из отрицательного числа')
-        self.assertEqual(heand(1,0),1.0)
+        self.assertEqual(heand(1,0), 1.0)
         self.assertEqual(heand(0,1),'Извлечение корня из отрицательного числа')
     
     def test_str(self):
-        self.assertEqual(heand("a",0),'Ошибка типов данных')
+        self.assertEqual(heand("a", 0),'Ошибка типов данных')
 
     def test_zero_input(self):
-        self.assertEqual(heand("",0),'Ошибка типов данных')
+        self.assertEqual(heand("", 0),'Ошибка типов данных')
     
     def test_two_float(self):
         self.assertEqual(heand(0.1,0.1),0.0)
-        self.assertEqual(heand(0.1,-0.1),'Извлечение корня из отрицательного числа')
-        self.assertEqual(heand(-0.1,0.1),'Извлечение корня из отрицательного числа')
+        self.assertEqual(heand(0.1,-0.1),'Деление на ноль')
+        self.assertEqual(heand(-0.1,0.1),'Деление на ноль')
         self.assertEqual(heand(0.1,0.2),'Извлечение корня из отрицательного числа')
         self.assertEqual(heand(0.2,0.1),0.10540925533894598)
     
     def test_two_type(self):
         self.assertEqual(heand(0.1,1),'Извлечение корня из отрицательного числа')
+
+if __name__ == "__main__":
+    unittest.main()
